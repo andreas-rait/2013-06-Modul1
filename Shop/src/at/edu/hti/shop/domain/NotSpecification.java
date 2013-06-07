@@ -1,0 +1,45 @@
+/** 
+ * Copyright 2013 SSI Schaefer PEEM GmbH. All Rights reserved. 
+ * <br /> <br />
+ * 
+ * $Id$
+ * <br /> <br />
+ *
+ */
+
+package at.edu.hti.shop.domain;
+
+/**
+ * This is the class header. The first sentence (ending with "."+SPACE) is
+ * important, because it is used summary in the package overview pages.<br />
+ * <br />
+ * 
+ * 
+ * @author ara
+ * @version $Revision$
+ */
+
+public class NotSpecification<T> extends AbstractSpecification<T> {
+
+	private final ISpecification<T> specification1;
+
+	public NotSpecification(ISpecification<T> speci1) {
+		if (speci1 == null) {
+			throw new NullPointerException("'spec1' must not be null");
+		}
+		this.specification1 = speci1;
+	}
+
+	@Override
+	public boolean isSatisfiedBy(T candidate) {
+		if (candidate == null) {
+			throw new NullPointerException("'candidate' must not be null");
+		}
+		return !specification1.isSatisfiedBy(candidate);
+	}
+
+}
+
+// ---------------------------- Revision History ----------------------------
+// $Log$
+//
